@@ -23,23 +23,10 @@ namespace NotificationService.Services
         {
             RepeatedField<string> recipients = new RepeatedField<string>
             {
-                "divyesh.bhartiya@cesltd.com",
-                "divyesh.bhartiya@gmail.com"
+                "abc.xyz@gmail.com"
             };
 
             return await _emailService.SendAsync(request.Sender, recipients, request.Subject, request.BodyText);
         }
-
-        //public override async Task<Response> SendAsync(SendBody request, ServerCallContext context)
-        //{
-        //    RepeatedField<string> recipients = new RepeatedField<string>
-        //    {
-        //        "divyesh.bhartiya@cesltd.com",
-        //        "divyesh.bhartiya@gmail.com"
-        //    };
-
-        //    return await _emailService.SendAsync(request.Sender, recipients, request.Subject, request.BodyText);
-        //}
-
     }
 }

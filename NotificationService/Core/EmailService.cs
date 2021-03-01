@@ -25,8 +25,8 @@ namespace NotificationService.Core
                 {
                     EmailMessage message = new EmailMessage
                     {
-                        Sender = new MailboxAddress("Self", from),
-                        Reciever = new MailboxAddress("Enjoy The Product", reciever),
+                        Sender = new MailboxAddress("Payment Update", from),
+                        Reciever = new MailboxAddress(string.Empty, reciever),
                         Subject = subject,
                         Content = html
                     };
@@ -38,7 +38,8 @@ namespace NotificationService.Core
                     await smtpClient.SendAsync(mimeMessage);
                     smtpClient.Disconnect(true);
                 }
-                return new Response { Message = "Email sent successfully", Status = Status.Success };
+                Console.WriteLine("Emails are sent successfully. Relax!!!");
+                return new Response { Message = "Emails sent successfully", Status = Status.Success };
             }
             catch(Exception ex)
             {
@@ -46,13 +47,13 @@ namespace NotificationService.Core
             }
         }
 
-        private MimeMessage CreateMimeMessageFromEmailMessage(EmailMessage message)
+        private static MimeMessage CreateMimeMessageFromEmailMessage(EmailMessage message)
         {
             var mimeMessage = new MimeMessage();
             mimeMessage.From.Add(message.Sender);
             mimeMessage.To.Add(message.Reciever);
             mimeMessage.Subject = message.Subject;
-            mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Html)
+            mimeMessage.Body = new TextPart(MimeKit.Text.TextFormat.Flowed)
             { Text = message.Content };
             return mimeMessage;
         }
