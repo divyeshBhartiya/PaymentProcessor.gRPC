@@ -1,0 +1,31 @@
+syntax = "proto3";
+
+option csharp_namespace = "NotificationService";
+
+package smtp;
+
+service Mail {
+    rpc Send (SendBody) returns (Response);
+}
+
+message SendBody {
+    string sender = 1;
+    repeated string recipients = 2;
+    repeated string cc = 3;
+    repeated string bcc = 4;
+    repeated string attachments = 5;
+    string subject = 6;
+    string bodyText = 7;
+    string bodyType = 8;    
+}
+
+
+message Response {
+    Status status = 1;
+    string message = 2;
+}
+
+enum Status {
+    Fail = 0;
+    Success = 1;
+}
