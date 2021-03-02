@@ -89,7 +89,7 @@ namespace ShippingService
                     BodyText = contentSb.ToString()
                 };
 
-                await _mailClient.SendAsync(body);
+                _ = _mailClient.SendAsync(body);
 
                 return new SendOrderReply
                 {
