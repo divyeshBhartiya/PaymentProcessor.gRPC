@@ -1,6 +1,8 @@
 # PaymentProcessor.gRPC
 This repository is created for knowing and learning the capabilites of gRPC.
 
+<img width="451" alt="Payment Processor" src="https://user-images.githubusercontent.com/16538471/139404507-a09b72b4-aad8-421f-9a0a-5357384358f3.png">
+
 The idea is to implement a Payment Processing Environment with gRPC Microservices which would trigger events and whenever step is completed.
 In this scenario we have 3 services: Payment Service, Shipment Service and Notification Service.
 
